@@ -20,12 +20,10 @@ namespace NivelStocareDate
         {
             if (nrClienti < clienti.Length)
             {
-                clienti[nrClienti++] = client;
+                clienti[nrClienti] = client;
+                nrClienti++;
             }
-            else
-            {
-                Console.WriteLine("Nu mai pot fi adăugați clienți!");
-            }
+            
         }
 
         public Client[] GetClient(out int nrClienti)

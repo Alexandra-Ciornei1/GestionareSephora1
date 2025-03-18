@@ -21,12 +21,10 @@ namespace NivelStocareDate
         {
             if (nrProduse < produse.Length) 
             {
-                produse[nrProduse++] = produs;
+                produse[nrProduse] = produs;
+                nrProduse++;
             }
-            else
-            {
-                Console.WriteLine("Nu mai pot fi adăugate produse!");
-            }
+            
         }
 
         public Produs[] GetProduse(out int nrProduse)

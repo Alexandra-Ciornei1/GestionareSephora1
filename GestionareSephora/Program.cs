@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using SephoraClase;
 using NivelStocareDate;
-
+using System.Configuration;
+using System.IO;
 
 class Program
 {
@@ -47,9 +48,52 @@ class Program
         return produse.Where(p => p != null && p.Nume.IndexOf(cuvantCautat, StringComparison.OrdinalIgnoreCase) >= 0).ToArray();
     }
 
+    static void CitesteCuvinteDinFisier(string filePath)
+    {
+        string[] words = File.ReadAllLines(filePath)
+                             .SelectMany(line => line.Split(new[] { ' ', '\t', ',', '.', ';', ':', '!', '?' }, StringSplitOptions.RemoveEmptyEntries))
+                             .ToArray();
+
+        List<string>[] ladderArray = new List<string>[26];
+        for (int i = 0; i < ladderArray.Length; i++)
+        {
+            ladderArray[i] = new List<string>();
+        }
+
+        foreach (var word in words)
+        {
+            char firstChar = char.ToLower(word[0]);
+            if (firstChar >= 'a' && firstChar <= 'z')
+            {
+                int index = firstChar - 'a';
+                ladderArray[index].Add(word);
+            }
+        }
+
+        for (int i = 0; i < ladderArray.Length; i++)
+        {
+            char letter = (char)('a' + i);
+            Console.WriteLine($"Cuvinte care incep cu: '{letter}':");
+            foreach (var word in ladderArray[i])
+            {
+                Console.WriteLine(word);
+            }
+            Console.WriteLine();
+        }
+    }
+
     static void Main()
     {
-        AdministrareProdus adminPr = new AdministrareProdus();
+        string numeFisierClienti = ConfigurationManager.AppSettings["NumeFisierClienti"];
+        string numeFisierProduse = ConfigurationManager.AppSettings["NumeFisierProduse"];
+        Console.WriteLine($"File path for clients from config: {numeFisierClienti}");
+        Console.WriteLine($"File path for products from config: {numeFisierProduse}");
+
+        AdministrareClient_FisierText adminClienti = new AdministrareClient_FisierText(numeFisierClienti);
+        AdministrareProdus_FisierText adminProduse = new AdministrareProdus_FisierText(numeFisierProduse);
+
+        Client clientNou = new Client(0, "", "");
+
         Console.Write("Numarul de produse pe care doriti sa il adaugati este: ");
         int nrPr;
         while (!int.TryParse(Console.ReadLine(), out nrPr) || nrPr <= 0)
@@ -60,10 +104,10 @@ class Program
         for (int i = 0; i < nrPr; i++)
         {
             Produs produs = Citeste_tastatura_p();
-            adminPr.AddProdus(produs);
+            adminProduse.AddProdus(produs);
         }
 
-        Produs[] produse = adminPr.GetProduse(out int nrProdus).Where(p => p != null).ToArray();
+        Produs[] produse = adminProduse.GetProduse(out int nrProdus).Where(p => p != null).ToArray();
         Console.WriteLine("\nProduse salvate:");
         foreach (var produs in produse)
         {
@@ -106,6 +150,17 @@ class Program
         else
         {
             Console.WriteLine("\nNu s-a gasit niciun produs.");
+        }
+
+        Console.Write("Introduceti calea fisierului cu cuvinte: ");
+        string filePath = Console.ReadLine();
+        if (File.Exists(filePath))
+        {
+            CitesteCuvinteDinFisier(filePath);
+        }
+        else
+        {
+            Console.WriteLine($"File not found: {filePath}");
         }
 
         Console.ReadKey();

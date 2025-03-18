@@ -42,7 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdministrareClient.cs" />
+    <Compile Include="AdministrareClient_FisierText.cs" />
     <Compile Include="AdministrareProdus.cs" />
+    <Compile Include="AdministrateProdus_FisierText.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
