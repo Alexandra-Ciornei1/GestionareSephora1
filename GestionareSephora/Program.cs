@@ -31,16 +31,33 @@ class Program
         string nume = Console.ReadLine();
 
         Console.Write("Pret Produs: ");
-        double pret;
-        while (!double.TryParse(Console.ReadLine(), out pret) || pret <= 0)
+        int pret;
+        while (!int.TryParse(Console.ReadLine(), out pret) || pret <= 0)
         {
             Console.Write("Pret invalid! Introduceti un numar valid: ");
         }
+        Console.Write("cantitate Produs: ");
+        string cantitate = Console.ReadLine();
 
-        Console.Write("Categorie Produs: ");
-        string categorie = Console.ReadLine();
+     
+        Console.WriteLine("Alegeti o categorie: ");
+        Console.WriteLine("1 - Machiaj \n" +
+        "2 - Skincare \n" +
+        "3 - Parfumuri \n" +
+        "4 - Bodycare \n" +
+        "5 - Par \n" +
+        "6 - Accesorii \n" +
+        "7 - KoreanBeauty \n");
 
-        return new Produs(nume, pret, categorie);
+        string opt = Console.ReadLine();
+        bool valid = Enum.TryParse(opt, out Categorii ps);
+        if (valid && Enum.IsDefined(typeof(Categorii), ps))
+        {
+            Produs produs = new Produs(nume, pret, cantitate);
+            produs.CategorieProd = ps;
+            return produs;
+        }
+        return new Produs(nume, pret, cantitate );
     }
 
     static Produs[] CautareInDenumire(Produs[] produse, string cuvantCautat)
@@ -92,7 +109,7 @@ class Program
         AdministrareClient_FisierText adminClienti = new AdministrareClient_FisierText(numeFisierClienti);
         AdministrareProdus_FisierText adminProduse = new AdministrareProdus_FisierText(numeFisierProduse);
 
-        Client clientNou = new Client(0, "", "");
+        Client clientNou = new Client();
 
         Console.Write("Numarul de produse pe care doriti sa il adaugati este: ");
         int nrPr;
@@ -114,7 +131,7 @@ class Program
             Console.WriteLine(produs);
         }
 
-        AdministrareClient adminCl = new AdministrareClient();
+        //AdministrareClient_FisierText adminClienti = new AdministrareClient();
         Console.Write("Numarul de clienti ai magazinului: ");
         int nrCl;
         while (!int.TryParse(Console.ReadLine(), out nrCl) || nrCl <= 0)
@@ -124,11 +141,11 @@ class Program
 
         for (int i = 0; i < nrCl; i++)
         {
-            Client client = Citeste_tastatura_c();
-            adminCl.AddClient(client);
+            clientNou = Citeste_tastatura_c();
+            adminClienti.AddClient(clientNou);
         }
 
-        Client[] clienti = adminCl.GetClient(out int nrClienti).Where(c => c != null).ToArray();
+        Client[] clienti = adminClienti.GetClienti(out int nrClienti).Where(c => c != null).ToArray();
         Console.WriteLine("\n Clientii magazinului:");
         foreach (var client in clienti)
         {

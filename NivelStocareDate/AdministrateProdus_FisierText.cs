@@ -24,7 +24,7 @@ namespace NivelStocareDate
             var produse = GetProduse(out int nrProduse);
             foreach (var p in produse)
             {
-                if (p.Nume == produs.Nume && p.Pret == produs.Pret && p.Categorie == produs.Categorie)
+                if (p.Nume == produs.Nume && p.Pret == produs.Pret && p.Cantitate == produs.Cantitate)
                 {
                     Console.WriteLine("Product already exists in the file.");
                     return;
@@ -44,12 +44,14 @@ namespace NivelStocareDate
             using (StreamReader sr = new StreamReader(filePath))
             {
                 string line;
+                nrProduse = 0;
                 while ((line = sr.ReadLine()) != null)
                 {
                     produse.Add(new Produs(line));
+                    nrProduse++;
                 }
             }
-            nrProduse = produse.Count;
+           // nrProduse = produse.Count;
             return produse.ToArray();
         }
     }

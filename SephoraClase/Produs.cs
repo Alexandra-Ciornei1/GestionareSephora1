@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Sockets;
 
 namespace SephoraClase
 {
@@ -6,35 +7,60 @@ namespace SephoraClase
     {
         // Proprietăți auto-implemented
         public string Nume { get; set; }
-        public double Pret { get; set; }
-        public string Categorie { get; set; }
+        public int Pret { get; set; }
+        public string Cantitate { get; set; }
+
+        public Categorii CategorieProd { get; set; }
 
         private const char SEPARATOR_PRINCIPAL_FISIER = ',';
         private const int NUME = 0;
         private const int PRET = 1;
-        private const int CATEGORIE = 2;
+        private const int CANTITATE = 2;
+        private const int CAT = 3;
 
         // Constructor
-        public Produs(string nume, double pret, string categorie)
+        public Produs(string nume, int pret, string cantitate)
         {
             Nume = nume;
             Pret = pret;
-            Categorie = categorie;
+            Cantitate = cantitate;
+           
         }
 
+        public Produs()
+        {
+            Nume = string.Empty;
+            Pret = 0;
+            Cantitate = string.Empty;
+        }
         public Produs(string linieFisier)
         {
             var dateFisier = linieFisier.Split(SEPARATOR_PRINCIPAL_FISIER);
 
             // ordinea de preluare a campurilor este data de ordinea in care au fost scrise in fisier
-            this.Nume = dateFisier[NUME].Split(':')[1].Trim();
-            this.Pret = double.Parse(dateFisier[PRET].Split(':')[1].Trim().Split(' ')[0]);
-            this.Categorie = dateFisier[CATEGORIE].Split(':')[1].Trim();
+            this.Nume = dateFisier[NUME];
+
+
+            this.Pret = Convert.ToInt32(dateFisier[PRET]);
+            
+            this.Cantitate = dateFisier[CANTITATE];
+            //this.CategorieProd = (Categorii)Enum.Parse(typeof(Categorii), dateFisier[CAT]);
         }
 
+        public string ConversieLaSir_PentruFisier()
+        {
+            return string.Format("{1}{0}{2}{0}{3}{0}{4}{0}",
+                SEPARATOR_PRINCIPAL_FISIER,
+                (Nume ?? " NECUNOSCUT "),
+                Pret.ToString(),
+                (Cantitate ?? " NECUNOSCUT "),
+                CategorieProd.ToString());
+
+          
+        }
         public override string ToString()
         {
-            return $"Nume: {Nume}, Pret: {Pret} RON, Categorie: {Categorie}";
+            return $"Nume: {Nume}, Pret: {Pret}, Cantitate: {Cantitate}, Categorie: {CategorieProd} \n";
         }
     }
 }

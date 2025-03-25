@@ -26,6 +26,15 @@ namespace SephoraClase
             Nume = nume;
             Email = email;
         }
+
+        public Client()
+        {
+            IDClient = 0;
+            Nume = string.Empty;
+            Email = string.Empty;
+        }
+
+
         public Client(string linieFisier)
         {
             var dateFisier = linieFisier.Split(SEPARATOR_PRINCIPAL_FISIER);
