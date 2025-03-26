@@ -32,7 +32,7 @@ class Program
 
         Console.Write("Pret Produs: ");
         int pret;
-        while (!int.TryParse(Console.ReadLine(), out pret) || pret <= 0)
+        while (!int.TryParse(Console.ReadLine(), out pret) || pret < 0)
         {
             Console.Write("Pret invalid! Introduceti un numar valid: ");
         }
@@ -111,25 +111,6 @@ class Program
 
         Client clientNou = new Client();
 
-        Console.Write("Numarul de produse pe care doriti sa il adaugati este: ");
-        int nrPr;
-        while (!int.TryParse(Console.ReadLine(), out nrPr) || nrPr <= 0)
-        {
-            Console.Write("Numar invalid! Introduceti un numar valid: ");
-        }
-
-        for (int i = 0; i < nrPr; i++)
-        {
-            Produs produs = Citeste_tastatura_p();
-            adminProduse.AddProdus(produs);
-        }
-
-        Produs[] produse = adminProduse.GetProduse(out int nrProdus).Where(p => p != null).ToArray();
-        Console.WriteLine("\nProduse salvate:");
-        foreach (var produs in produse)
-        {
-            Console.WriteLine(produs);
-        }
 
         //AdministrareClient_FisierText adminClienti = new AdministrareClient();
         Console.Write("Numarul de clienti ai magazinului: ");
@@ -150,6 +131,26 @@ class Program
         foreach (var client in clienti)
         {
             Console.WriteLine(client);
+        }
+
+        Console.Write("Numarul de produse pe care doriti sa il adaugati este: ");
+        int nrPr;
+        while (!int.TryParse(Console.ReadLine(), out nrPr) || nrPr <= 0)
+        {
+            Console.Write("Numar invalid! Introduceti un numar valid: ");
+        }
+
+        for (int i = 0; i < nrPr; i++)
+        {
+            Produs produs = Citeste_tastatura_p();
+            adminProduse.AddProdus(produs);
+        }
+
+        Produs[] produse = adminProduse.GetProduse(out int nrProdus).Where(p => p != null).ToArray();
+        Console.WriteLine("\nProduse salvate:");
+        foreach (var produs in produse)
+        {
+            Console.WriteLine(produs);
         }
 
         Console.Write("Introduceti cuvantul cautat in denumirea produsului: ");

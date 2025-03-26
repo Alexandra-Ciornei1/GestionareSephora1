@@ -7,6 +7,7 @@ namespace NivelStocareDate
 {
     public class AdministrareProdus_FisierText
     {
+        private const int NR_MAX_PRODUSE = 50;
         private string filePath;
 
         public AdministrareProdus_FisierText(string filePath)
@@ -20,16 +21,20 @@ namespace NivelStocareDate
 
         public void AddProdus(Produs produs)
         {
-            // Check if the product already exists in the file
-            var produse = GetProduse(out int nrProduse);
-            foreach (var p in produse)
+            using(StreamWriter streamWriterFisierText= new StreamWriter (filePath, true))
             {
-                if (p.Nume == produs.Nume && p.Pret == produs.Pret && p.Cantitate == produs.Cantitate)
-                {
-                    Console.WriteLine("Product already exists in the file.");
-                    return;
-                }
+                streamWriterFisierText.WriteLine(produs.ConversieLaSir_PentruFisier());
             }
+            // Check if the product already exists in the file
+            //var produse = GetProduse(out int nrProduse);
+            //foreach (var p in produse)
+            //{
+            //    if (p.Nume == produs.Nume && p.Pret == produs.Pret && p.Cantitate == produs.Cantitate)
+            //    {
+            //        Console.WriteLine("Product already exists in the file.");
+            //        return;
+            //    }
+            //}
 
             // If the product does not exist, add it to the file
             using (StreamWriter streamWriterFisierText = new StreamWriter(filePath, true))
@@ -40,19 +45,18 @@ namespace NivelStocareDate
 
         public Produs[] GetProduse(out int nrProduse)
         {
-            List<Produs> produse = new List<Produs>();
-            using (StreamReader sr = new StreamReader(filePath))
+            Produs[] produse = new Produs[NR_MAX_PRODUSE];
+            using (StreamReader streamReader = new StreamReader(filePath))
             {
                 string line;
                 nrProduse = 0;
-                while ((line = sr.ReadLine()) != null)
+                while ((line = streamReader.ReadLine()) != null)
                 {
-                    produse.Add(new Produs(line));
-                    nrProduse++;
+                   produse[nrProduse++] = new Produs(line);
                 }
             }
-           // nrProduse = produse.Count;
-            return produse.ToArray();
+            // nrProduse = produse.Count;
+            return produse;
         }
     }
 }
