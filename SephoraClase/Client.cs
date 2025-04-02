@@ -45,20 +45,22 @@ namespace SephoraClase
 
 
         }
-        
+
+
 
         public string ConversieLaSir_PentruFisier()
-        {
-            return string.Format("{1}{0}{2}{0}{3}{0}",
-                SEPARATOR_PRINCIPAL_FISIER,
-                IDClient.ToString(),
-                (Nume ?? " NECUNOSCUT "),
-                (Email ?? " NECUNOSCUT "));
-                
+         {
+             return string.Format("{1}{0}{2}{0}{3}{0}",
+                 SEPARATOR_PRINCIPAL_FISIER,
+                 IDClient.ToString(),
+                 (Nume ?? " NECUNOSCUT "),
+                 (Email ?? " NECUNOSCUT "));
 
-        }
+
+         }
         public override string ToString()
         {
+            
             return $"ID Client: {IDClient}, Nume: {Nume}, Email: {Email}";
         }
     }

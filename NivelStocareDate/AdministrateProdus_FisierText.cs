@@ -37,10 +37,7 @@ namespace NivelStocareDate
             //}
 
             // If the product does not exist, add it to the file
-            using (StreamWriter streamWriterFisierText = new StreamWriter(filePath, true))
-            {
-                streamWriterFisierText.WriteLine(produs.ToString());
-            }
+            
         }
 
         public Produs[] GetProduse(out int nrProduse)

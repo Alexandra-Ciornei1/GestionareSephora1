@@ -5,7 +5,7 @@ namespace SephoraClase
     public class Produs
     {
         // Constante
-        private const char SEPARATOR_PRINCIPAL_FISIER = ';';
+        private const char SEPARATOR_PRINCIPAL_FISIER =';';
 
         private const int NUME = 0;
         private const int PRET = 1;
@@ -46,27 +46,33 @@ namespace SephoraClase
         }
 
         // Metodă pentru conversia la șir pentru fișier
-        public string ConversieLaSir_PentruFisier()
+        /*public string ConversieLaSir_PentruFisier()
+         {
+             return string.Format($"{1}{0}{2}{0}{3}{0}{4}",
+                 SEPARATOR_PRINCIPAL_FISIER,
+                 (Nume ?? " NECUNOSCUT "),
+                 Pret,
+                 (Cantitate ?? " NECUNOSCUT "),
+                 CategorieProd.ToString());
+         }
+        */
+       public string ConversieLaSir_PentruFisier()
         {
-            return string.Format("{1}{0}{2}{0}{3}{0}{4}",
-                SEPARATOR_PRINCIPAL_FISIER,
-                (Nume ?? " NECUNOSCUT "),
-                Pret.ToString(),
-                (Cantitate ?? " NECUNOSCUT "),
-                CategorieProd.ToString());
+            return string.Format($"{Nume}{SEPARATOR_PRINCIPAL_FISIER}{Pret}{SEPARATOR_PRINCIPAL_FISIER}{Cantitate}{SEPARATOR_PRINCIPAL_FISIER}{CategorieProd}");
         }
+
 
         // Metodă pentru afișarea informațiilor despre produs
         public string Info()
         {
-            return $"Nume: {Nume}, Pret: {Pret}, Cantitate: {Cantitate}, Categorie: {CategorieProd}";
+            return $"Nume: {Nume}; Pret: {Pret}; Cantitate: {Cantitate}; Categorie: {CategorieProd}";
         }
 
-        public override string ToString()
+       /*public override string ToString()
         {
             return Info();
         }
-
+       */
         public bool ValidarePret(int pret)
         {
             if (pret > 0)

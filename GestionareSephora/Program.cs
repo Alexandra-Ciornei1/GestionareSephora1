@@ -65,7 +65,7 @@ class Program
         return produse.Where(p => p != null && p.Nume.IndexOf(cuvantCautat, StringComparison.OrdinalIgnoreCase) >= 0).ToArray();
     }
 
-    static void CitesteCuvinteDinFisier(string filePath)
+    /*static void CitesteCuvinteDinFisier(string filePath)
     {
         string[] words = File.ReadAllLines(filePath)
                              .SelectMany(line => line.Split(new[] { ' ', '\t', ',', '.', ';', ':', '!', '?' }, StringSplitOptions.RemoveEmptyEntries))
@@ -97,8 +97,9 @@ class Program
             }
             Console.WriteLine();
         }
-    }
-
+    
+    }*/
+    
     static void Main()
     {
         string numeFisierClienti = ConfigurationManager.AppSettings["NumeFisierClienti"];
@@ -126,12 +127,12 @@ class Program
             adminClienti.AddClient(clientNou);
         }
 
-        Client[] clienti = adminClienti.GetClienti(out int nrClienti).Where(c => c != null).ToArray();
-        Console.WriteLine("\n Clientii magazinului:");
-        foreach (var client in clienti)
-        {
-            Console.WriteLine(client);
-        }
+        //Client[] clienti = adminClienti.GetClienti(out int nrClienti).Where(c => c != null).ToArray();
+        //Console.WriteLine("\n Clientii magazinului:");
+        //foreach (var client in clienti)
+        //{
+        //    Console.WriteLine(client);
+        //}
 
         Console.Write("Numarul de produse pe care doriti sa il adaugati este: ");
         int nrPr;
@@ -146,13 +147,13 @@ class Program
             adminProduse.AddProdus(produs);
         }
 
-        Produs[] produse = adminProduse.GetProduse(out int nrProdus).Where(p => p != null).ToArray();
-        Console.WriteLine("\nProduse salvate:");
+       Produs[] produse = adminProduse.GetProduse(out int nrProdus).Where(p => p != null).ToArray();
+       /* Console.WriteLine("\nProduse salvate:");
         foreach (var produs in produse)
         {
             Console.WriteLine(produs);
         }
-
+       */
         Console.Write("Introduceti cuvantul cautat in denumirea produsului: ");
         string cuvantCautat = Console.ReadLine();
         Produs[] rezultate = CautareInDenumire(produse, cuvantCautat);
@@ -170,7 +171,7 @@ class Program
             Console.WriteLine("\nNu s-a gasit niciun produs.");
         }
 
-        Console.Write("Introduceti calea fisierului cu cuvinte: ");
+       /* Console.Write("Introduceti calea fisierului cu cuvinte: ");
         string filePath = Console.ReadLine();
         if (File.Exists(filePath))
         {
@@ -180,6 +181,7 @@ class Program
         {
             Console.WriteLine($"File not found: {filePath}");
         }
+       */
 
         Console.ReadKey();
     }
