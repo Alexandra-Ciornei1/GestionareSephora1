@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("InterfataUtilizator_WindowsForms")]
+[assembly: AssemblyTitle("Interfata_WindowsForms")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("InterfataUtilizator_WindowsForms")]
+[assembly: AssemblyProduct("Interfata_WindowsForms")]
 [assembly: AssemblyCopyright("Copyright ©  2025")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("1a1db733-e258-4103-8e3d-e4826c92936b")]
+[assembly: Guid("32e00f5e-e9a0-4609-9a7a-37ae1c49dffc")]
 
 // Version information for an assembly consists of the following four values:
 //

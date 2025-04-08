@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace InterfataUtilizator_WindowsForms.Properties
+namespace Interfata_WindowsForms.Properties
 {
 
 

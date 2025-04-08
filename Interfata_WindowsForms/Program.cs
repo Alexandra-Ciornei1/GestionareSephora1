@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace InterfataUtilizator_WindowsForms
+namespace Interfata_WindowsForms
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace InterfataUtilizator_WindowsForms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormProdus());
+            Application.Run(new Form1());
         }
     }
 }
