@@ -14,7 +14,7 @@ namespace SephoraClase
 
         // Proprietăți auto-implemented
         public string Nume { get; set; }
-        public int Pret { get; set; }
+        public float Pret { get; set; }
         public string Cantitate { get; set; }
         public Categorii CategorieProd { get; set; }
 
@@ -27,7 +27,7 @@ namespace SephoraClase
         }
 
         // Constructor cu parametri
-        public Produs(string nume, int pret, string cantitate)
+        public Produs(string nume, float pret, string cantitate)
         {
             Nume = nume;
             Pret = pret;

@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormClienti));
             this.label1 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtNumeClient = new System.Windows.Forms.TextBox();
@@ -35,14 +37,23 @@
             this.btnAdaugaClient = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.listClienti = new System.Windows.Forms.ListBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider3 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnInapoi = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(95, 56);
+            this.label1.Location = new System.Drawing.Point(94, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(19, 15);
             this.label1.TabIndex = 0;
@@ -50,21 +61,21 @@
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(54, 85);
+            this.txtId.Location = new System.Drawing.Point(54, 37);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(100, 20);
             this.txtId.TabIndex = 1;
             // 
             // txtNumeClient
             // 
-            this.txtNumeClient.Location = new System.Drawing.Point(216, 85);
+            this.txtNumeClient.Location = new System.Drawing.Point(54, 108);
             this.txtNumeClient.Name = "txtNumeClient";
             this.txtNumeClient.Size = new System.Drawing.Size(100, 20);
             this.txtNumeClient.TabIndex = 2;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(371, 85);
+            this.txtEmail.Location = new System.Drawing.Point(54, 178);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(100, 20);
             this.txtEmail.TabIndex = 3;
@@ -74,18 +85,19 @@
             this.btnAdaugaClient.BackColor = System.Drawing.Color.Thistle;
             this.btnAdaugaClient.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdaugaClient.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnAdaugaClient.Location = new System.Drawing.Point(216, 143);
+            this.btnAdaugaClient.Location = new System.Drawing.Point(271, 233);
             this.btnAdaugaClient.Name = "btnAdaugaClient";
             this.btnAdaugaClient.Size = new System.Drawing.Size(115, 23);
             this.btnAdaugaClient.TabIndex = 4;
             this.btnAdaugaClient.Text = "Adauga Client";
             this.btnAdaugaClient.UseVisualStyleBackColor = false;
+            this.btnAdaugaClient.Click += new System.EventHandler(this.btnAdaugaClient_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(230, 56);
+            this.label2.Location = new System.Drawing.Point(69, 90);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 15);
             this.label2.TabIndex = 5;
@@ -95,19 +107,70 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(402, 56);
+            this.label3.Location = new System.Drawing.Point(85, 160);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 15);
             this.label3.TabIndex = 6;
             this.label3.Text = "Email";
             // 
-            // listClienti
+            // errorProvider1
             // 
-            this.listClienti.FormattingEnabled = true;
-            this.listClienti.Location = new System.Drawing.Point(216, 189);
-            this.listClienti.Name = "listClienti";
-            this.listClienti.Size = new System.Drawing.Size(120, 95);
-            this.listClienti.TabIndex = 7;
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider1.Icon")));
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(447, 43);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(118, 15);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "ID-ul este obligatoriu!";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(450, 114);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(126, 15);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Numele este obligatori!";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(450, 184);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(136, 15);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Email-ul este obligatoriu!";
+            // 
+            // errorProvider2
+            // 
+            this.errorProvider2.ContainerControl = this;
+            this.errorProvider2.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider2.Icon")));
+            // 
+            // errorProvider3
+            // 
+            this.errorProvider3.ContainerControl = this;
+            this.errorProvider3.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider3.Icon")));
+            // 
+            // btnInapoi
+            // 
+            this.btnInapoi.BackColor = System.Drawing.Color.Thistle;
+            this.btnInapoi.Location = new System.Drawing.Point(612, 274);
+            this.btnInapoi.Name = "btnInapoi";
+            this.btnInapoi.Size = new System.Drawing.Size(75, 23);
+            this.btnInapoi.TabIndex = 10;
+            this.btnInapoi.Text = "Inapoi";
+            this.btnInapoi.UseVisualStyleBackColor = false;
+            this.btnInapoi.Click += new System.EventHandler(this.btnInapoi_click);
             // 
             // FormClienti
             // 
@@ -115,7 +178,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.listClienti);
+            this.Controls.Add(this.btnInapoi);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnAdaugaClient);
@@ -125,6 +191,9 @@
             this.Controls.Add(this.label1);
             this.Name = "FormClienti";
             this.Text = "FormClienti";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,6 +208,12 @@
         private System.Windows.Forms.Button btnAdaugaClient;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ListBox listClienti;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ErrorProvider errorProvider2;
+        private System.Windows.Forms.ErrorProvider errorProvider3;
+        private System.Windows.Forms.Button btnInapoi;
     }
 }

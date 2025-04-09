@@ -33,18 +33,18 @@
             this.txtPret = new System.Windows.Forms.TextBox();
             this.txtCantitate = new System.Windows.Forms.TextBox();
             this.btnAdaugaProdus = new System.Windows.Forms.Button();
-            this.listProduse = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.comboCategorie = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnInapoip = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(23, 81);
+            this.label1.Location = new System.Drawing.Point(34, 81);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 15);
             this.label1.TabIndex = 0;
@@ -52,14 +52,14 @@
             // 
             // txtNumeProdus
             // 
-            this.txtNumeProdus.Location = new System.Drawing.Point(12, 108);
+            this.txtNumeProdus.Location = new System.Drawing.Point(26, 108);
             this.txtNumeProdus.Name = "txtNumeProdus";
             this.txtNumeProdus.Size = new System.Drawing.Size(100, 20);
             this.txtNumeProdus.TabIndex = 1;
             // 
             // txtPret
             // 
-            this.txtPret.Location = new System.Drawing.Point(155, 108);
+            this.txtPret.Location = new System.Drawing.Point(167, 108);
             this.txtPret.Name = "txtPret";
             this.txtPret.Size = new System.Drawing.Size(100, 20);
             this.txtPret.TabIndex = 2;
@@ -81,14 +81,7 @@
             this.btnAdaugaProdus.TabIndex = 4;
             this.btnAdaugaProdus.Text = "Adauga produs";
             this.btnAdaugaProdus.UseVisualStyleBackColor = false;
-            // 
-            // listProduse
-            // 
-            this.listProduse.FormattingEnabled = true;
-            this.listProduse.Location = new System.Drawing.Point(229, 197);
-            this.listProduse.Name = "listProduse";
-            this.listProduse.Size = new System.Drawing.Size(120, 95);
-            this.listProduse.TabIndex = 5;
+            this.btnAdaugaProdus.Click += new System.EventHandler(this.btnAdaugaProdus_Click);
             // 
             // label2
             // 
@@ -142,17 +135,29 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Categorie";
             // 
+            // btnInapoip
+            // 
+            this.btnInapoip.BackColor = System.Drawing.Color.Thistle;
+            this.btnInapoip.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInapoip.Location = new System.Drawing.Point(438, 270);
+            this.btnInapoip.Name = "btnInapoip";
+            this.btnInapoip.Size = new System.Drawing.Size(75, 23);
+            this.btnInapoip.TabIndex = 10;
+            this.btnInapoip.Text = "Inapoi";
+            this.btnInapoip.UseVisualStyleBackColor = false;
+            this.btnInapoip.Click += new System.EventHandler(this.btnInapoip_click);
+            // 
             // FormProduse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnInapoip);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.comboCategorie);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.listProduse);
             this.Controls.Add(this.btnAdaugaProdus);
             this.Controls.Add(this.txtCantitate);
             this.Controls.Add(this.txtPret);
@@ -172,10 +177,10 @@
         private System.Windows.Forms.TextBox txtPret;
         private System.Windows.Forms.TextBox txtCantitate;
         private System.Windows.Forms.Button btnAdaugaProdus;
-        private System.Windows.Forms.ListBox listProduse;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboCategorie;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnInapoip;
     }
 }

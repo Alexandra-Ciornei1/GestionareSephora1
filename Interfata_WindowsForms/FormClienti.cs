@@ -1,90 +1,110 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using SephoraClase;
+using NivelStocareDate;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Reflection.Emit;
 
 namespace Interfata_WindowsForms
 {
     public partial class FormClienti : Form
     {
-        private List<Client> clienti = new List<Client>();
-
+        private AdministrareClient_FisierText adminClienti;
         public FormClienti()
         {
             InitializeComponent();
-            IncarcaClienti();
+            adminClienti = new AdministrareClient_FisierText("clienti.txt");
         }
+        
+        private bool ValidareInput()
+        {
+            bool valid = true;
+            errorProvider1.Clear();
 
+            label4.Visible = false;
+            label5.Visible = false;
+            label6.Visible = false;
+
+            if (string.IsNullOrWhiteSpace(txtId.Text))
+            {
+                errorProvider1.SetError(txtId, "Id-ul este obligatoriu!");
+                label4.Text = "Prenumele este obligatoriu!";
+                label4.Visible = true;
+                valid = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtNumeClient.Text))
+            {
+                errorProvider2.SetError(txtNumeClient, "Numele este obligatoriu!");
+                label5.Text = "Numele este obligatoriu!";
+                label5.Visible = true;
+                valid = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                errorProvider3.SetError(txtEmail, "Email este obligatoriu!");
+                label6.Text = "Email nu a fost adăugată!";
+                label6.Visible = true;
+                valid = false;
+            }
+
+            return valid;
+        }
         private void btnAdaugaClient_Click(object sender, EventArgs e)
         {
+            if (!ValidareInput())
+            {
+                // Dacă validarea eșuează, ieșim din metodă
+                return;
+            }
+            // Validare ID
             if (!int.TryParse(txtId.Text, out int id))
             {
-                MessageBox.Show("ID-ul trebuie să fie un număr întreg!", "Atenție", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("ID-ul trebuie să fie un număr întreg!", "Atenție",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            // Validare câmpuri obligatorii
             string nume = txtNumeClient.Text;
             string email = txtEmail.Text;
-
-            if (string.IsNullOrEmpty(nume) || string.IsNullOrEmpty(nume) || string.IsNullOrEmpty(email))
+            if (string.IsNullOrEmpty(nume) || string.IsNullOrEmpty(email))
             {
-                MessageBox.Show("Toate câmpurile sunt obligatorii!", "Atenție", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Numele și emailul sunt obligatorii!", "Atenție",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            Client client = new Client(id, nume, email);
-            clienti.Add(client);
-            ActualizeazaListaClienti();
-            SalveazaClienti();
-            MessageBox.Show("Client adăugat cu succes!", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            txtId.Clear();
-            txtNumeClient.Clear();
-            txtEmail.Clear();
-        }
-
-        private void ActualizeazaListaClienti()
-        {
-            listClienti.Items.Clear();
-            foreach (var client in clienti)
-            {
-                listClienti.Items.Add($"ID: {client.IDClient}, Nume: {client.Nume}, Email: {client.Email}");
-            }
-        }
-
-        private void SalveazaClienti()
-        {
-            using (StreamWriter sw = new StreamWriter("clienti.txt"))
-            {
-                foreach (var client in clienti)
-                {
-                    sw.WriteLine($"{client.IDClient},{client.Nume},{client.Email}");
-                }
-            }
-        }
-
-        private void IncarcaClienti()
-        {
+            // Salvare direct în fișier
             try
             {
-                if (File.Exists("clienti.txt"))
+                using (StreamWriter sw = File.AppendText("clienti.txt"))
                 {
-                    foreach (string linie in File.ReadAllLines("clienti.txt"))
-                    {
-                        string[] parti = linie.Split(',');
-                        if (int.TryParse(parti[0], out int id))
-                        {
-                            string nume = parti[1];
-                            string email = parti[2];
-                            clienti.Add(new Client { IDClient = id, Nume = nume, Email = email });
-                        }
-                    }
-                    ActualizeazaListaClienti();
+                    sw.WriteLine($"{id},{nume},{email}");
                 }
+
+                // Resetare câmpuri
+                txtId.Clear();
+                txtNumeClient.Clear();
+                txtEmail.Clear();
+
+                MessageBox.Show("Client adăugat cu succes!", "Succes",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Eroare la încărcarea clienților: {ex.Message}", "Eroare", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Eroare la salvarea clientului: {ex.Message}", "Eroare",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnInapoi_click(object sender, EventArgs e)
+        {
+            Form1 form = new Form1();
+            form.Show();
+            this.Hide();
         }
     }
 }

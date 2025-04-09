@@ -14,12 +14,16 @@ namespace Interfata_WindowsForms
         {
             FormProduse formProduse = new FormProduse();
             formProduse.ShowDialog(); // Deschide formularul pentru produse
+            this.Hide(); // Ascunde formularul curent
         }
 
         private void btnClienti_Click(object sender, EventArgs e)
         {
             FormClienti formClienti = new FormClienti();
             formClienti.ShowDialog(); // Deschide formularul pentru clienți
+            this.Hide(); // Ascunde formularul curent
         }
+
+       
     }
 }

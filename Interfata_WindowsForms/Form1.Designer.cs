@@ -36,7 +36,7 @@
             // 
             this.btnClienti.BackColor = System.Drawing.Color.LightCoral;
             this.btnClienti.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClienti.Location = new System.Drawing.Point(99, 132);
+            this.btnClienti.Location = new System.Drawing.Point(162, 132);
             this.btnClienti.Name = "btnClienti";
             this.btnClienti.Size = new System.Drawing.Size(171, 44);
             this.btnClienti.TabIndex = 0;
@@ -48,12 +48,13 @@
             // 
             this.btnProduse.BackColor = System.Drawing.Color.LightCoral;
             this.btnProduse.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProduse.Location = new System.Drawing.Point(317, 132);
+            this.btnProduse.Location = new System.Drawing.Point(409, 132);
             this.btnProduse.Name = "btnProduse";
             this.btnProduse.Size = new System.Drawing.Size(162, 44);
             this.btnProduse.TabIndex = 1;
             this.btnProduse.Text = "Gestionare produse";
             this.btnProduse.UseVisualStyleBackColor = false;
+            this.btnProduse.Click += new System.EventHandler(this.btnProduse_Click);
             // 
             // Form1
             // 
