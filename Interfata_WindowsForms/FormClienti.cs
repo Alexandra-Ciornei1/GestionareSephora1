@@ -52,6 +52,33 @@ namespace Interfata_WindowsForms
 
             return valid;
         }
+        private bool ExistaClient(string id, string nume, string email)
+        {
+            try
+            {
+                if (!File.Exists("clienti.txt"))
+                    return false;
+
+                string[] linii = File.ReadAllLines("clienti.txt");
+                foreach (string linie in linii)
+                {
+                    string[] date = linie.Split(',');
+                    if (date.Length == 3 &&
+                        date[0].Trim() == id &&
+                        date[1].Trim().Equals(nume, StringComparison.OrdinalIgnoreCase) &&
+                        date[2].Trim().Equals(email, StringComparison.OrdinalIgnoreCase))
+                    {
+                        return true; // Clientul există deja
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Eroare la verificarea clientului: {ex.Message}", "Eroare",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return false;
+        }
         private void btnAdaugaClient_Click(object sender, EventArgs e)
         {
             if (!ValidareInput())
@@ -67,6 +94,7 @@ namespace Interfata_WindowsForms
                 return;
             }
 
+
             // Validare câmpuri obligatorii
             string nume = txtNumeClient.Text;
             string email = txtEmail.Text;
@@ -76,7 +104,12 @@ namespace Interfata_WindowsForms
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
+            if (ExistaClient(txtId.Text, nume, email))
+            {
+                MessageBox.Show("Există deja un client cu acest ID, nume și email!", "Atenție",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             // Salvare direct în fișier
             try
             {
@@ -105,6 +138,54 @@ namespace Interfata_WindowsForms
             Form1 form = new Form1();
             form.Show();
             this.Hide();
+        }
+        private void btnCautare_Click(object sender, EventArgs e)
+        {
+            string termenCautare = txtCautare.Text.Trim().ToLower();
+            if (string.IsNullOrEmpty(termenCautare))
+            {
+                MessageBox.Show("Introdu un termen de căutare!", "Atenție",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // Curățăm rezultatele anterioare
+                Rezultate.Items.Clear();
+
+                // Citim toți clienții din fișier
+                string[] linii = File.ReadAllLines("clienti.txt");
+                bool clientGasit = false;
+
+                foreach (string linie in linii)
+                {
+                    string[] date = linie.Split(',');
+                    if (date.Length != 3) continue; // Verificăm formatul
+
+                    string id = date[0];
+                    string nume = date[1].ToLower();
+                    string email = date[2].ToLower();
+
+                    // Verificăm dacă termenul de căutare se potrivește cu ID, nume sau email
+                    if (id.Contains(termenCautare) || nume.Contains(termenCautare) || email.Contains(termenCautare))
+                    {
+                        Rezultate.Items.Add($"ID: {date[0]}, Nume: {date[1]}, Email: {date[2]}");
+                        clientGasit = true;
+                    }
+                }
+
+                if (!clientGasit)
+                {
+                    MessageBox.Show("Niciun client găsit!", "Info",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Eroare la căutare: {ex.Message}", "Eroare",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
