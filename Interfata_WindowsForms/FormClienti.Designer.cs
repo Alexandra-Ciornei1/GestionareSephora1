@@ -47,6 +47,8 @@
             this.btnCautare = new System.Windows.Forms.Button();
             this.txtCautare = new System.Windows.Forms.TextBox();
             this.Rezultate = new System.Windows.Forms.ListBox();
+            this.chkEmailNotifications = new System.Windows.Forms.CheckBox();
+            this.chkLoyaltyProgram = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).BeginInit();
@@ -88,7 +90,7 @@
             this.btnAdaugaClient.BackColor = System.Drawing.Color.Thistle;
             this.btnAdaugaClient.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdaugaClient.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnAdaugaClient.Location = new System.Drawing.Point(280, 181);
+            this.btnAdaugaClient.Location = new System.Drawing.Point(280, 221);
             this.btnAdaugaClient.Name = "btnAdaugaClient";
             this.btnAdaugaClient.Size = new System.Drawing.Size(115, 23);
             this.btnAdaugaClient.TabIndex = 4;
@@ -179,7 +181,7 @@
             // 
             this.btnCautare.BackColor = System.Drawing.Color.Thistle;
             this.btnCautare.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCautare.Location = new System.Drawing.Point(280, 235);
+            this.btnCautare.Location = new System.Drawing.Point(280, 265);
             this.btnCautare.Name = "btnCautare";
             this.btnCautare.Size = new System.Drawing.Size(115, 23);
             this.btnCautare.TabIndex = 11;
@@ -189,7 +191,7 @@
             // 
             // txtCautare
             // 
-            this.txtCautare.Location = new System.Drawing.Point(96, 235);
+            this.txtCautare.Location = new System.Drawing.Point(96, 268);
             this.txtCautare.Name = "txtCautare";
             this.txtCautare.Size = new System.Drawing.Size(100, 20);
             this.txtCautare.TabIndex = 12;
@@ -204,12 +206,36 @@
             this.Rezultate.Size = new System.Drawing.Size(258, 94);
             this.Rezultate.TabIndex = 13;
             // 
+            // chkEmailNotifications
+            // 
+            this.chkEmailNotifications.AutoSize = true;
+            this.chkEmailNotifications.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkEmailNotifications.Location = new System.Drawing.Point(96, 193);
+            this.chkEmailNotifications.Name = "chkEmailNotifications";
+            this.chkEmailNotifications.Size = new System.Drawing.Size(107, 19);
+            this.chkEmailNotifications.TabIndex = 14;
+            this.chkEmailNotifications.Text = "Notificari Email";
+            this.chkEmailNotifications.UseVisualStyleBackColor = true;
+            // 
+            // chkLoyaltyProgram
+            // 
+            this.chkLoyaltyProgram.AutoSize = true;
+            this.chkLoyaltyProgram.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkLoyaltyProgram.Location = new System.Drawing.Point(243, 193);
+            this.chkLoyaltyProgram.Name = "chkLoyaltyProgram";
+            this.chkLoyaltyProgram.Size = new System.Drawing.Size(122, 19);
+            this.chkLoyaltyProgram.TabIndex = 15;
+            this.chkLoyaltyProgram.Text = "Program Loialitate";
+            this.chkLoyaltyProgram.UseVisualStyleBackColor = true;
+            // 
             // FormClienti
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.chkLoyaltyProgram);
+            this.Controls.Add(this.chkEmailNotifications);
             this.Controls.Add(this.Rezultate);
             this.Controls.Add(this.txtCautare);
             this.Controls.Add(this.btnCautare);
@@ -253,5 +279,7 @@
         private System.Windows.Forms.Button btnCautare;
         private System.Windows.Forms.ListBox Rezultate;
         private System.Windows.Forms.TextBox txtCautare;
+        private System.Windows.Forms.CheckBox chkLoyaltyProgram;
+        private System.Windows.Forms.CheckBox chkEmailNotifications;
     }
 }

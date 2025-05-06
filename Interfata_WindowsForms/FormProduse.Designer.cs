@@ -37,7 +37,6 @@
             this.btnAdaugaProdus = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboCategorie = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnInapoip = new System.Windows.Forms.Button();
             this.txtCautareP = new System.Windows.Forms.TextBox();
@@ -51,6 +50,13 @@
             this.errorPret = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorCantitate = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorCategorie = new System.Windows.Forms.ErrorProvider(this.components);
+            this.rdbMachiaj = new System.Windows.Forms.RadioButton();
+            this.rdbSkinCare = new System.Windows.Forms.RadioButton();
+            this.rdbParfum = new System.Windows.Forms.RadioButton();
+            this.rdbBodycare = new System.Windows.Forms.RadioButton();
+            this.rdbPar = new System.Windows.Forms.RadioButton();
+            this.rdbAccesorii = new System.Windows.Forms.RadioButton();
+            this.rdbKorean = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.errorNume)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorPret)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorCantitate)).BeginInit();
@@ -92,7 +98,7 @@
             // 
             this.btnAdaugaProdus.BackColor = System.Drawing.Color.Thistle;
             this.btnAdaugaProdus.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdaugaProdus.Location = new System.Drawing.Point(197, 284);
+            this.btnAdaugaProdus.Location = new System.Drawing.Point(204, 322);
             this.btnAdaugaProdus.Name = "btnAdaugaProdus";
             this.btnAdaugaProdus.Size = new System.Drawing.Size(95, 23);
             this.btnAdaugaProdus.TabIndex = 4;
@@ -120,28 +126,6 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Cantitate";
             // 
-            // comboCategorie
-            // 
-            this.comboCategorie.FormattingEnabled = true;
-            this.comboCategorie.Items.AddRange(new object[] {
-            "Machiaj",
-            "",
-            "Skincare",
-            "",
-            "Parfumuri",
-            "",
-            "Bodycare",
-            "",
-            "Par",
-            "",
-            "Accesorii",
-            "",
-            "KoreanBeauty"});
-            this.comboCategorie.Location = new System.Drawing.Point(76, 223);
-            this.comboCategorie.Name = "comboCategorie";
-            this.comboCategorie.Size = new System.Drawing.Size(121, 21);
-            this.comboCategorie.TabIndex = 8;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -156,7 +140,7 @@
             // 
             this.btnInapoip.BackColor = System.Drawing.Color.Thistle;
             this.btnInapoip.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInapoip.Location = new System.Drawing.Point(650, 344);
+            this.btnInapoip.Location = new System.Drawing.Point(645, 380);
             this.btnInapoip.Name = "btnInapoip";
             this.btnInapoip.Size = new System.Drawing.Size(75, 23);
             this.btnInapoip.TabIndex = 10;
@@ -167,7 +151,7 @@
             // txtCautareP
             // 
             this.txtCautareP.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCautareP.Location = new System.Drawing.Point(482, 77);
+            this.txtCautareP.Location = new System.Drawing.Point(481, 49);
             this.txtCautareP.Name = "txtCautareP";
             this.txtCautareP.Size = new System.Drawing.Size(100, 21);
             this.txtCautareP.TabIndex = 11;
@@ -176,7 +160,7 @@
             // 
             this.btnCautareP.BackColor = System.Drawing.Color.Thistle;
             this.btnCautareP.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCautareP.Location = new System.Drawing.Point(634, 75);
+            this.btnCautareP.Location = new System.Drawing.Point(645, 49);
             this.btnCautareP.Name = "btnCautareP";
             this.btnCautareP.Size = new System.Drawing.Size(117, 23);
             this.btnCautareP.TabIndex = 12;
@@ -189,9 +173,9 @@
             this.RezultateP.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RezultateP.FormattingEnabled = true;
             this.RezultateP.ItemHeight = 15;
-            this.RezultateP.Location = new System.Drawing.Point(482, 151);
+            this.RezultateP.Location = new System.Drawing.Point(481, 126);
             this.RezultateP.Name = "RezultateP";
-            this.RezultateP.Size = new System.Drawing.Size(306, 94);
+            this.RezultateP.Size = new System.Drawing.Size(321, 94);
             this.RezultateP.TabIndex = 13;
             // 
             // labelNume
@@ -232,7 +216,7 @@
             this.labelCategorie.AutoSize = true;
             this.labelCategorie.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCategorie.ForeColor = System.Drawing.Color.Red;
-            this.labelCategorie.Location = new System.Drawing.Point(252, 225);
+            this.labelCategorie.Location = new System.Drawing.Point(269, 227);
             this.labelCategorie.Name = "labelCategorie";
             this.labelCategorie.Size = new System.Drawing.Size(141, 15);
             this.labelCategorie.TabIndex = 17;
@@ -258,12 +242,98 @@
             this.errorCategorie.ContainerControl = this;
             this.errorCategorie.Icon = ((System.Drawing.Icon)(resources.GetObject("errorCategorie.Icon")));
             // 
+            // rdbMachiaj
+            // 
+            this.rdbMachiaj.AutoSize = true;
+            this.rdbMachiaj.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbMachiaj.Location = new System.Drawing.Point(38, 226);
+            this.rdbMachiaj.Name = "rdbMachiaj";
+            this.rdbMachiaj.Size = new System.Drawing.Size(65, 19);
+            this.rdbMachiaj.TabIndex = 18;
+            this.rdbMachiaj.TabStop = true;
+            this.rdbMachiaj.Text = "Machiaj";
+            this.rdbMachiaj.UseVisualStyleBackColor = true;
+            // 
+            // rdbSkinCare
+            // 
+            this.rdbSkinCare.AutoSize = true;
+            this.rdbSkinCare.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbSkinCare.Location = new System.Drawing.Point(105, 225);
+            this.rdbSkinCare.Name = "rdbSkinCare";
+            this.rdbSkinCare.Size = new System.Drawing.Size(74, 19);
+            this.rdbSkinCare.TabIndex = 19;
+            this.rdbSkinCare.TabStop = true;
+            this.rdbSkinCare.Text = "SkinCare";
+            this.rdbSkinCare.UseVisualStyleBackColor = true;
+            // 
+            // rdbParfum
+            // 
+            this.rdbParfum.AutoSize = true;
+            this.rdbParfum.Location = new System.Drawing.Point(176, 228);
+            this.rdbParfum.Name = "rdbParfum";
+            this.rdbParfum.Size = new System.Drawing.Size(58, 17);
+            this.rdbParfum.TabIndex = 20;
+            this.rdbParfum.TabStop = true;
+            this.rdbParfum.Text = "Parfum";
+            this.rdbParfum.UseVisualStyleBackColor = true;
+            // 
+            // rdbBodycare
+            // 
+            this.rdbBodycare.AutoSize = true;
+            this.rdbBodycare.Location = new System.Drawing.Point(105, 251);
+            this.rdbBodycare.Name = "rdbBodycare";
+            this.rdbBodycare.Size = new System.Drawing.Size(70, 17);
+            this.rdbBodycare.TabIndex = 21;
+            this.rdbBodycare.TabStop = true;
+            this.rdbBodycare.Text = "Bodycare";
+            this.rdbBodycare.UseVisualStyleBackColor = true;
+            // 
+            // rdbPar
+            // 
+            this.rdbPar.AutoSize = true;
+            this.rdbPar.Location = new System.Drawing.Point(176, 251);
+            this.rdbPar.Name = "rdbPar";
+            this.rdbPar.Size = new System.Drawing.Size(41, 17);
+            this.rdbPar.TabIndex = 22;
+            this.rdbPar.TabStop = true;
+            this.rdbPar.Text = "Par";
+            this.rdbPar.UseVisualStyleBackColor = true;
+            // 
+            // rdbAccesorii
+            // 
+            this.rdbAccesorii.AutoSize = true;
+            this.rdbAccesorii.Location = new System.Drawing.Point(38, 251);
+            this.rdbAccesorii.Name = "rdbAccesorii";
+            this.rdbAccesorii.Size = new System.Drawing.Size(68, 17);
+            this.rdbAccesorii.TabIndex = 23;
+            this.rdbAccesorii.TabStop = true;
+            this.rdbAccesorii.Text = "Accesorii";
+            this.rdbAccesorii.UseVisualStyleBackColor = true;
+            // 
+            // rdbKorean
+            // 
+            this.rdbKorean.AutoSize = true;
+            this.rdbKorean.Location = new System.Drawing.Point(105, 274);
+            this.rdbKorean.Name = "rdbKorean";
+            this.rdbKorean.Size = new System.Drawing.Size(92, 17);
+            this.rdbKorean.TabIndex = 24;
+            this.rdbKorean.TabStop = true;
+            this.rdbKorean.Text = "KoreanBeauty";
+            this.rdbKorean.UseVisualStyleBackColor = true;
+            // 
             // FormProduse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.rdbKorean);
+            this.Controls.Add(this.rdbAccesorii);
+            this.Controls.Add(this.rdbPar);
+            this.Controls.Add(this.rdbBodycare);
+            this.Controls.Add(this.rdbParfum);
+            this.Controls.Add(this.rdbSkinCare);
+            this.Controls.Add(this.rdbMachiaj);
             this.Controls.Add(this.labelCategorie);
             this.Controls.Add(this.labelCantitate);
             this.Controls.Add(this.labelPret);
@@ -273,7 +343,6 @@
             this.Controls.Add(this.txtCautareP);
             this.Controls.Add(this.btnInapoip);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.comboCategorie);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnAdaugaProdus);
@@ -301,7 +370,6 @@
         private System.Windows.Forms.Button btnAdaugaProdus;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboCategorie;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnInapoip;
         private System.Windows.Forms.TextBox txtCautareP;
@@ -315,5 +383,12 @@
         private System.Windows.Forms.ErrorProvider errorPret;
         private System.Windows.Forms.ErrorProvider errorCantitate;
         private System.Windows.Forms.ErrorProvider errorCategorie;
+        private System.Windows.Forms.RadioButton rdbPar;
+        private System.Windows.Forms.RadioButton rdbBodycare;
+        private System.Windows.Forms.RadioButton rdbParfum;
+        private System.Windows.Forms.RadioButton rdbSkinCare;
+        private System.Windows.Forms.RadioButton rdbMachiaj;
+        private System.Windows.Forms.RadioButton rdbAccesorii;
+        private System.Windows.Forms.RadioButton rdbKorean;
     }
 }

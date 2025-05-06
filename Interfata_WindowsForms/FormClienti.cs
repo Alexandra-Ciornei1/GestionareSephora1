@@ -4,19 +4,21 @@ using System.Windows.Forms;
 using SephoraClase;
 using NivelStocareDate;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Reflection.Emit;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Interfata_WindowsForms
 {
     public partial class FormClienti : Form
     {
         private AdministrareClient_FisierText adminClienti;
+
         public FormClienti()
         {
             InitializeComponent();
             adminClienti = new AdministrareClient_FisierText("clienti.txt");
         }
-        
+
         private bool ValidareInput()
         {
             bool valid = true;
@@ -52,6 +54,7 @@ namespace Interfata_WindowsForms
 
             return valid;
         }
+
         private bool ExistaClient(string id, string nume, string email)
         {
             try
@@ -63,12 +66,12 @@ namespace Interfata_WindowsForms
                 foreach (string linie in linii)
                 {
                     string[] date = linie.Split(',');
-                    if (date.Length == 3 &&
+                    if (date.Length >= 3 &&
                         date[0].Trim() == id &&
                         date[1].Trim().Equals(nume, StringComparison.OrdinalIgnoreCase) &&
                         date[2].Trim().Equals(email, StringComparison.OrdinalIgnoreCase))
                     {
-                        return true; // Clientul există deja
+                        return true;
                     }
                 }
             }
@@ -79,14 +82,12 @@ namespace Interfata_WindowsForms
             }
             return false;
         }
+
         private void btnAdaugaClient_Click(object sender, EventArgs e)
         {
             if (!ValidareInput())
-            {
-                // Dacă validarea eșuează, ieșim din metodă
                 return;
-            }
-            // Validare ID
+
             if (!int.TryParse(txtId.Text, out int id))
             {
                 MessageBox.Show("ID-ul trebuie să fie un număr întreg!", "Atenție",
@@ -94,37 +95,35 @@ namespace Interfata_WindowsForms
                 return;
             }
 
-
-            // Validare câmpuri obligatorii
             string nume = txtNumeClient.Text;
             string email = txtEmail.Text;
-            if (string.IsNullOrEmpty(nume) || string.IsNullOrEmpty(email))
-            {
-                MessageBox.Show("Numele și emailul sunt obligatorii!", "Atenție",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (ExistaClient(txtId.Text, nume, email))
+            List<string> preferinte = new List<string>();
+            if (chkEmailNotifications.Checked) preferinte.Add("Notificari Email");
+            if (chkLoyaltyProgram.Checked) preferinte.Add("Program de loialitate");
+            string preferinteStr = preferinte.Any() ? string.Join(";", preferinte) : "";
+
+            if (ExistaClient(id.ToString(), nume, email))
             {
                 MessageBox.Show("Există deja un client cu acest ID, nume și email!", "Atenție",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            // Salvare direct în fișier
+
             try
             {
                 using (StreamWriter sw = File.AppendText("clienti.txt"))
                 {
-                    sw.WriteLine($"{id},{nume},{email}");
+                    sw.WriteLine($"{id},{nume},{email},{preferinteStr}");
                 }
-
-                // Resetare câmpuri
-                txtId.Clear();
-                txtNumeClient.Clear();
-                txtEmail.Clear();
 
                 MessageBox.Show("Client adăugat cu succes!", "Succes",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                txtId.Clear();
+                txtNumeClient.Clear();
+                txtEmail.Clear();
+                chkEmailNotifications.Checked = false;
+                chkLoyaltyProgram.Checked = false;
             }
             catch (Exception ex)
             {
@@ -139,6 +138,7 @@ namespace Interfata_WindowsForms
             form.Show();
             this.Hide();
         }
+
         private void btnCautare_Click(object sender, EventArgs e)
         {
             string termenCautare = txtCautare.Text.Trim().ToLower();
@@ -151,23 +151,19 @@ namespace Interfata_WindowsForms
 
             try
             {
-                // Curățăm rezultatele anterioare
                 Rezultate.Items.Clear();
-
-                // Citim toți clienții din fișier
                 string[] linii = File.ReadAllLines("clienti.txt");
                 bool clientGasit = false;
 
                 foreach (string linie in linii)
                 {
                     string[] date = linie.Split(',');
-                    if (date.Length != 3) continue; // Verificăm formatul
+                    if (date.Length < 3) continue;
 
                     string id = date[0];
                     string nume = date[1].ToLower();
                     string email = date[2].ToLower();
 
-                    // Verificăm dacă termenul de căutare se potrivește cu ID, nume sau email
                     if (id.Contains(termenCautare) || nume.Contains(termenCautare) || email.Contains(termenCautare))
                     {
                         Rezultate.Items.Add($"ID: {date[0]}, Nume: {date[1]}, Email: {date[2]}");

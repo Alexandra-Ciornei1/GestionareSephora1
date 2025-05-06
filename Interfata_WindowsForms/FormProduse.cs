@@ -49,10 +49,10 @@ namespace Interfata_WindowsForms
                 labelCantitate.Visible = true;
                 valid = false;
             }
-            if (string.IsNullOrWhiteSpace(comboCategorie.Text))
+            if (!rdbMachiaj.Checked && !rdbSkinCare.Checked && !rdbParfum.Checked &&
+        !rdbBodycare.Checked && !rdbPar.Checked && !rdbAccesorii.Checked && !rdbKorean.Checked)
             {
-                errorCategorie.SetError(comboCategorie, "Categoria este obligatorie!");
-                labelCategorie.Text = "Categoria nu a fost aleasă!";
+                labelCategorie.Text = "Selectați o categorie!";
                 labelCategorie.Visible = true;
                 valid = false;
             }
@@ -97,7 +97,7 @@ namespace Interfata_WindowsForms
             string nume = txtNumeProdus.Text;
             string pretText = txtPret.Text;
             string cantitateText = txtCantitate.Text;
-            string categorie = comboCategorie.SelectedItem?.ToString();
+            string categorie = GetCategorieSelectata().ToString();
 
             // Validare câmpuri
             if (string.IsNullOrEmpty(nume) || string.IsNullOrEmpty(pretText) ||
@@ -145,6 +145,24 @@ namespace Interfata_WindowsForms
             }
         }
 
+        private Categorii GetCategorieSelectata()
+        {
+            if (rdbMachiaj.Checked)
+                return Categorii.Machiaj;
+            if (rdbSkinCare.Checked)
+                return Categorii.Skincare;
+            if (rdbParfum.Checked)
+                return Categorii.Parfumuri;
+            if (rdbBodycare.Checked)
+                return Categorii.Bodycare;
+            if (rdbPar.Checked)
+                return Categorii.Par;
+            if (rdbAccesorii.Checked)
+                return Categorii.Accesorii;
+            if (rdbKorean.Checked)
+                return Categorii.KoreanBeauty;
+            return Categorii.Machiaj;
+        }
         private void btnInapoip_click(object sender, EventArgs e)
         {
             Form1 form = new Form1();
