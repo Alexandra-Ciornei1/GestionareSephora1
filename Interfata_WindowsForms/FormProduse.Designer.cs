@@ -39,9 +39,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnInapoip = new System.Windows.Forms.Button();
-            this.txtCautareP = new System.Windows.Forms.TextBox();
-            this.btnCautareP = new System.Windows.Forms.Button();
-            this.RezultateP = new System.Windows.Forms.ListBox();
             this.labelNume = new System.Windows.Forms.Label();
             this.labelPret = new System.Windows.Forms.Label();
             this.labelCantitate = new System.Windows.Forms.Label();
@@ -147,36 +144,6 @@
             this.btnInapoip.Text = "Inapoi";
             this.btnInapoip.UseVisualStyleBackColor = false;
             this.btnInapoip.Click += new System.EventHandler(this.btnInapoip_click);
-            // 
-            // txtCautareP
-            // 
-            this.txtCautareP.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCautareP.Location = new System.Drawing.Point(481, 49);
-            this.txtCautareP.Name = "txtCautareP";
-            this.txtCautareP.Size = new System.Drawing.Size(100, 21);
-            this.txtCautareP.TabIndex = 11;
-            // 
-            // btnCautareP
-            // 
-            this.btnCautareP.BackColor = System.Drawing.Color.Thistle;
-            this.btnCautareP.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCautareP.Location = new System.Drawing.Point(645, 49);
-            this.btnCautareP.Name = "btnCautareP";
-            this.btnCautareP.Size = new System.Drawing.Size(117, 23);
-            this.btnCautareP.TabIndex = 12;
-            this.btnCautareP.Text = "Cautare produs";
-            this.btnCautareP.UseVisualStyleBackColor = false;
-            this.btnCautareP.Click += new System.EventHandler(this.btnCautaP_Click);
-            // 
-            // RezultateP
-            // 
-            this.RezultateP.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RezultateP.FormattingEnabled = true;
-            this.RezultateP.ItemHeight = 15;
-            this.RezultateP.Location = new System.Drawing.Point(481, 126);
-            this.RezultateP.Name = "RezultateP";
-            this.RezultateP.Size = new System.Drawing.Size(321, 94);
-            this.RezultateP.TabIndex = 13;
             // 
             // labelNume
             // 
@@ -338,9 +305,6 @@
             this.Controls.Add(this.labelCantitate);
             this.Controls.Add(this.labelPret);
             this.Controls.Add(this.labelNume);
-            this.Controls.Add(this.RezultateP);
-            this.Controls.Add(this.btnCautareP);
-            this.Controls.Add(this.txtCautareP);
             this.Controls.Add(this.btnInapoip);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -372,9 +336,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnInapoip;
-        private System.Windows.Forms.TextBox txtCautareP;
-        private System.Windows.Forms.Button btnCautareP;
-        private System.Windows.Forms.ListBox RezultateP;
         private System.Windows.Forms.Label labelNume;
         private System.Windows.Forms.Label labelPret;
         private System.Windows.Forms.Label labelCantitate;

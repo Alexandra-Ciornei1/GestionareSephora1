@@ -124,6 +124,11 @@ namespace Interfata_WindowsForms
                 txtEmail.Clear();
                 chkEmailNotifications.Checked = false;
                 chkLoyaltyProgram.Checked = false;
+
+                // Deschide FormAfisareClienti după adăugarea clientului
+                FormAfisareClienti form = new FormAfisareClienti();
+                form.Show();
+                this.Hide();
             }
             catch (Exception ex)
             {
@@ -137,51 +142,6 @@ namespace Interfata_WindowsForms
             Form1 form = new Form1();
             form.Show();
             this.Hide();
-        }
-
-        private void btnCautare_Click(object sender, EventArgs e)
-        {
-            string termenCautare = txtCautare.Text.Trim().ToLower();
-            if (string.IsNullOrEmpty(termenCautare))
-            {
-                MessageBox.Show("Introdu un termen de căutare!", "Atenție",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            try
-            {
-                Rezultate.Items.Clear();
-                string[] linii = File.ReadAllLines("clienti.txt");
-                bool clientGasit = false;
-
-                foreach (string linie in linii)
-                {
-                    string[] date = linie.Split(',');
-                    if (date.Length < 3) continue;
-
-                    string id = date[0];
-                    string nume = date[1].ToLower();
-                    string email = date[2].ToLower();
-
-                    if (id.Contains(termenCautare) || nume.Contains(termenCautare) || email.Contains(termenCautare))
-                    {
-                        Rezultate.Items.Add($"ID: {date[0]}, Nume: {date[1]}, Email: {date[2]}");
-                        clientGasit = true;
-                    }
-                }
-
-                if (!clientGasit)
-                {
-                    MessageBox.Show("Niciun client găsit!", "Info",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Eroare la căutare: {ex.Message}", "Eroare",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
     }
 }

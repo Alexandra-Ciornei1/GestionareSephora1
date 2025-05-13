@@ -12,17 +12,12 @@ namespace NivelStocareDate
         public AdministrareClient_FisierText(string numeFisier)
         {
             this.numeFisier = numeFisier;
-            // se incearca deschiderea fisierului in modul OpenOrCreate
-            // astfel incat sa fie creat daca nu exista
             Stream streamFisierText = File.Open(numeFisier, FileMode.OpenOrCreate);
             streamFisierText.Close();
         }
 
         public void AddClient(Client client)
         {
-            // instructiunea 'using' va apela la final streamWriterFisierText.Close();
-            // al doilea parametru setat la 'true' al constructorului StreamWriter indica
-            // modul 'append' de deschidere al fisierului
             using (StreamWriter streamWriterFisierText = new StreamWriter(numeFisier, true))
             {
                 streamWriterFisierText.WriteLine(client.ConversieLaSir_PentruFisier());
@@ -32,22 +27,73 @@ namespace NivelStocareDate
         public Client[] GetClienti(out int nrClienti)
         {
             Client[] clienti = new Client[NR_MAX_CLIENTI];
-
-            // instructiunea 'using' va apela streamReader.Close()
             using (StreamReader streamReader = new StreamReader(numeFisier))
             {
                 string linieFisier;
                 nrClienti = 0;
-
-                // citeste cate o linie si creaza un obiect de tip Client
-                // pe baza datelor din linia citita
                 while ((linieFisier = streamReader.ReadLine()) != null)
                 {
                     clienti[nrClienti++] = new Client(linieFisier);
                 }
             }
-
             return clienti;
+        }
+
+        public Client GetClient(int index)
+        {
+            using (StreamReader streamReader = new StreamReader(numeFisier))
+            {
+                string linieFisier;
+                int currentIndex = 0;
+                while ((linieFisier = streamReader.ReadLine()) != null)
+                {
+                    if (currentIndex == index)
+                    {
+                        return new Client(linieFisier);
+                    }
+                    currentIndex++;
+                }
+            }
+            throw new Exception("Clientul cu indexul specificat nu există.");
+        }
+
+        public bool UpdateClient(Client clientActualizat)
+        {
+            try
+            {
+                Client[] clienti;
+                int nrClienti;
+                clienti = GetClienti(out nrClienti);
+                bool clientGasit = false;
+
+                for (int i = 0; i < nrClienti; i++)
+                {
+                    if (clienti[i].IDClient == clientActualizat.IDClient)
+                    {
+                        clienti[i] = clientActualizat;
+                        clientGasit = true;
+                        break;
+                    }
+                }
+
+                if (!clientGasit)
+                {
+                    return false;
+                }
+
+                using (StreamWriter streamWriter = new StreamWriter(numeFisier, false))
+                {
+                    for (int i = 0; i < nrClienti; i++)
+                    {
+                        streamWriter.WriteLine(clienti[i].ConversieLaSir_PentruFisier());
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Eroare la actualizarea clientului: {ex.Message}");
+            }
         }
     }
 }

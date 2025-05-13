@@ -36,7 +36,7 @@
             // 
             this.btnClienti.BackColor = System.Drawing.Color.LightCoral;
             this.btnClienti.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClienti.Location = new System.Drawing.Point(162, 132);
+            this.btnClienti.Location = new System.Drawing.Point(136, 180);
             this.btnClienti.Name = "btnClienti";
             this.btnClienti.Size = new System.Drawing.Size(171, 44);
             this.btnClienti.TabIndex = 0;
@@ -48,7 +48,7 @@
             // 
             this.btnProduse.BackColor = System.Drawing.Color.LightCoral;
             this.btnProduse.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProduse.Location = new System.Drawing.Point(409, 132);
+            this.btnProduse.Location = new System.Drawing.Point(422, 180);
             this.btnProduse.Name = "btnProduse";
             this.btnProduse.Size = new System.Drawing.Size(162, 44);
             this.btnProduse.TabIndex = 1;

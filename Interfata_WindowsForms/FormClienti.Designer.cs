@@ -44,9 +44,6 @@
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider3 = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnInapoi = new System.Windows.Forms.Button();
-            this.btnCautare = new System.Windows.Forms.Button();
-            this.txtCautare = new System.Windows.Forms.TextBox();
-            this.Rezultate = new System.Windows.Forms.ListBox();
             this.chkEmailNotifications = new System.Windows.Forms.CheckBox();
             this.chkLoyaltyProgram = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -169,42 +166,13 @@
             // btnInapoi
             // 
             this.btnInapoi.BackColor = System.Drawing.Color.Thistle;
-            this.btnInapoi.Location = new System.Drawing.Point(628, 400);
+            this.btnInapoi.Location = new System.Drawing.Point(614, 279);
             this.btnInapoi.Name = "btnInapoi";
             this.btnInapoi.Size = new System.Drawing.Size(75, 23);
             this.btnInapoi.TabIndex = 10;
             this.btnInapoi.Text = "Inapoi";
             this.btnInapoi.UseVisualStyleBackColor = false;
             this.btnInapoi.Click += new System.EventHandler(this.btnInapoi_click);
-            // 
-            // btnCautare
-            // 
-            this.btnCautare.BackColor = System.Drawing.Color.Thistle;
-            this.btnCautare.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCautare.Location = new System.Drawing.Point(280, 265);
-            this.btnCautare.Name = "btnCautare";
-            this.btnCautare.Size = new System.Drawing.Size(115, 23);
-            this.btnCautare.TabIndex = 11;
-            this.btnCautare.Text = "Cautare Client";
-            this.btnCautare.UseVisualStyleBackColor = false;
-            this.btnCautare.Click += new System.EventHandler(this.btnCautare_Click);
-            // 
-            // txtCautare
-            // 
-            this.txtCautare.Location = new System.Drawing.Point(96, 268);
-            this.txtCautare.Name = "txtCautare";
-            this.txtCautare.Size = new System.Drawing.Size(100, 20);
-            this.txtCautare.TabIndex = 12;
-            // 
-            // Rezultate
-            // 
-            this.Rezultate.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Rezultate.FormattingEnabled = true;
-            this.Rezultate.ItemHeight = 15;
-            this.Rezultate.Location = new System.Drawing.Point(96, 304);
-            this.Rezultate.Name = "Rezultate";
-            this.Rezultate.Size = new System.Drawing.Size(258, 94);
-            this.Rezultate.TabIndex = 13;
             // 
             // chkEmailNotifications
             // 
@@ -236,9 +204,6 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.chkLoyaltyProgram);
             this.Controls.Add(this.chkEmailNotifications);
-            this.Controls.Add(this.Rezultate);
-            this.Controls.Add(this.txtCautare);
-            this.Controls.Add(this.btnCautare);
             this.Controls.Add(this.btnInapoi);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -276,9 +241,6 @@
         private System.Windows.Forms.ErrorProvider errorProvider2;
         private System.Windows.Forms.ErrorProvider errorProvider3;
         private System.Windows.Forms.Button btnInapoi;
-        private System.Windows.Forms.Button btnCautare;
-        private System.Windows.Forms.ListBox Rezultate;
-        private System.Windows.Forms.TextBox txtCautare;
         private System.Windows.Forms.CheckBox chkLoyaltyProgram;
         private System.Windows.Forms.CheckBox chkEmailNotifications;
     }

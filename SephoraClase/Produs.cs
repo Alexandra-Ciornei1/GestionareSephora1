@@ -5,7 +5,7 @@ namespace SephoraClase
     public class Produs
     {
         // Constante
-        private const char SEPARATOR_PRINCIPAL_FISIER =';';
+        private const char SEPARATOR_PRINCIPAL_FISIER =',';
 
         private const int NUME = 0;
         private const int PRET = 1;

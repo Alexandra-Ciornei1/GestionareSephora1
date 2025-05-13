@@ -127,7 +127,7 @@ namespace Interfata_WindowsForms
             {
                 using (StreamWriter sw = File.AppendText("produse.txt"))
                 {
-                    sw.WriteLine($"{categorie},{nume},{pret}, {cantitate}");
+                    sw.WriteLine($"{nume},{pret},{cantitate},{categorie}"); // Corectare ordine câmpuri
                 }
 
                 // Resetare câmpuri
@@ -137,6 +137,11 @@ namespace Interfata_WindowsForms
 
                 MessageBox.Show("Produs adăugat cu succes!", "Succes",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Deschide FormAfisareProduse
+                FormAfisareProduse formAfisare = new FormAfisareProduse();
+                formAfisare.Show();
+                this.Close(); // Închide FormProduse
             }
             catch (Exception ex)
             {
@@ -169,50 +174,7 @@ namespace Interfata_WindowsForms
             form.Show();
             this.Hide();
         }
-        private void btnCautaP_Click(object sender, EventArgs e)
-        {
-            string termenCautare = txtCautareP.Text.Trim();
-
-            if (string.IsNullOrEmpty(termenCautare))
-            {
-                MessageBox.Show("Introdu un nume de produs pentru căutare!", "Atenție",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            try
-            {
-                // Golim ListBox-ul înainte de o nouă căutare
-                RezultateP.Items.Clear();
-
-                bool produsGasit = false;
-
-                // Citire din fișier
-                string[] linii = File.ReadAllLines("produse.txt");
-                foreach (string linie in linii)
-                {
-                    string[] detalii = linie.Split(',');
-                    if (detalii.Length == 4 && detalii[1].Trim().Equals(termenCautare, StringComparison.OrdinalIgnoreCase))
-                    {
-                        // Adăugăm produsul găsit în ListBox
-                        RezultateP.Items.Add($"Categorie: {detalii[0]}, Nume: {detalii[1]}, Preț: {detalii[2]}, Cantitate: {detalii[3]}");
-                        produsGasit = true;
-                    }
-                }
-
-                if (!produsGasit)
-                {
-                    MessageBox.Show($"Niciun produs găsit cu numele '{termenCautare}'!", "Informare",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Eroare la căutarea produsului: {ex.Message}", "Eroare",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
+       
         
     }
 }
