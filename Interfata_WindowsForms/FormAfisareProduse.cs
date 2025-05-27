@@ -12,6 +12,7 @@ namespace Interfata_WindowsForms
         private AdministrareProdus_FisierText adminProduse;
         private int selectedIndex = -1;
 
+        //  încarcă lista produselor din fișier
         public FormAfisareProduse()
         {
             InitializeComponent();
@@ -20,9 +21,11 @@ namespace Interfata_WindowsForms
             BtnModifica.Click += BtnModifica_Click;
             btnCautareA.Click += btnCautareA_Click;
             InapoiB.Click += InapoiB_Click;
+            AdaugareProdusBtn.Click += AdaugareProdusBtn_Click;
             IncarcaProduse();
         }
 
+        // Actualizează câmpurile text cu datele produsului selectat din tabel
         private void DataGridViewProduse_SelectionChanged(object sender, EventArgs e)
         {
             if (dataGridViewProduse.SelectedRows.Count > 0)
@@ -37,6 +40,7 @@ namespace Interfata_WindowsForms
             }
         }
 
+        // Buton: Modifică datele produsului selectat și actualizează fișierul
         private void BtnModifica_Click(object sender, EventArgs e)
         {
             if (selectedIndex < 0)
@@ -91,11 +95,12 @@ namespace Interfata_WindowsForms
 
         private void InapoiB_Click(object sender, EventArgs e)
         {
-            FormProduse form = new FormProduse();
+            Form1 form = new Form1();
             form.Show();
             this.Close();
         }
 
+        // Buton: Caută produse în funcție de termenul introdus și actualizează tabelul
         private void btnCautareA_Click(object sender, EventArgs e)
         {
             string termenCautare = txtCautareB.Text.Trim().ToLower();
@@ -129,7 +134,6 @@ namespace Interfata_WindowsForms
                     Produs produs = produse[i];
                     if (produs == null) continue;
 
-                    
                     if (
                         produs.Nume.ToLower().Contains(termenCautare) ||
                         produs.Pret.ToString().ToLower().Contains(termenCautare) ||
@@ -162,8 +166,15 @@ namespace Interfata_WindowsForms
             }
         }
 
+        // Buton: Deschide formularul pentru adăugarea unui produs nou
+        private void AdaugareProdusBtn_Click(object sender, EventArgs e)
+        {
+            FormProduse formProduse = new FormProduse();
+            formProduse.Show();
+            this.Hide();
+        }
 
-
+        // Încarcă toate produsele din fișier în tabelul DataGridView
         private void IncarcaProduse()
         {
             try

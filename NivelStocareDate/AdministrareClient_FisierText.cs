@@ -9,6 +9,7 @@ namespace NivelStocareDate
         private const int NR_MAX_CLIENTI = 50;
         private string numeFisier;
 
+        // Inițializează clasa și creează sau deschide fișierul pentru clienți
         public AdministrareClient_FisierText(string numeFisier)
         {
             this.numeFisier = numeFisier;
@@ -16,6 +17,7 @@ namespace NivelStocareDate
             streamFisierText.Close();
         }
 
+        // Adaugă un client nou în fișierul text
         public void AddClient(Client client)
         {
             using (StreamWriter streamWriterFisierText = new StreamWriter(numeFisier, true))
@@ -24,6 +26,7 @@ namespace NivelStocareDate
             }
         }
 
+        // Citește toți clienții din fișier și îi returnează ca un array
         public Client[] GetClienti(out int nrClienti)
         {
             Client[] clienti = new Client[NR_MAX_CLIENTI];
@@ -39,6 +42,7 @@ namespace NivelStocareDate
             return clienti;
         }
 
+        // Returnează un client specific din fișier pe baza indexului
         public Client GetClient(int index)
         {
             using (StreamReader streamReader = new StreamReader(numeFisier))
@@ -57,6 +61,7 @@ namespace NivelStocareDate
             throw new Exception("Clientul cu indexul specificat nu există.");
         }
 
+        // Actualizează informațiile unui client existent în fișier
         public bool UpdateClient(Client clientActualizat)
         {
             try

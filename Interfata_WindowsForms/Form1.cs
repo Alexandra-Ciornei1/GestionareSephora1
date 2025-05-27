@@ -12,18 +12,17 @@ namespace Interfata_WindowsForms
 
         private void btnProduse_Click(object sender, EventArgs e)
         {
-            FormProduse formProduse = new FormProduse();
-            formProduse.ShowDialog(); // Deschide formularul pentru produse
-            this.Hide(); // Ascunde formularul curent
+            FormAfisareProduse formAfisareProduse = new FormAfisareProduse();
+            formAfisareProduse.ShowDialog();
+            this.Hide();
         }
+
 
         private void btnClienti_Click(object sender, EventArgs e)
         {
-            FormClienti formClienti = new FormClienti();
-            formClienti.ShowDialog(); // Deschide formularul pentru clienți
-            this.Hide(); // Ascunde formularul curent
+            FormAfisareClienti formAfisareClienti = new FormAfisareClienti();
+            formAfisareClienti.ShowDialog();
+            this.Hide();
         }
-
-       
     }
 }

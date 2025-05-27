@@ -9,17 +9,25 @@ namespace Interfata_WindowsForms
     {
         private AdministrareClient_FisierText adminClienti;
 
+        // încarcă lista clienților din fișier
         public FormAfisareClienti()
         {
             InitializeComponent();
             adminClienti = new AdministrareClient_FisierText("clienti.txt");
             dataGridViewClienti.SelectionChanged += DataGridViewClienti_SelectionChanged;
             BtnModifica.Click += BtnModifica_Click;
-            btnCautareA.Click += btnCautareA_Click;
-            InapoiA.Click += InapoiA_Click;
+
             IncarcaClienti();
         }
 
+        private void BtnAdaugaClient_Click(object sender, EventArgs e)
+        {
+            FormClienti form = new FormClienti();
+            form.Show();
+            this.Hide();
+        }
+
+        // Actualizează câmpurile text cu datele clientului selectat din tabel
         private void DataGridViewClienti_SelectionChanged(object sender, EventArgs e)
         {
             if (dataGridViewClienti.SelectedRows.Count > 0)
@@ -34,6 +42,7 @@ namespace Interfata_WindowsForms
             }
         }
 
+        // Buton: Modifică datele clientului selectat și actualizează fișierul
         private void BtnModifica_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtId.Text) || string.IsNullOrEmpty(txtNume.Text) || string.IsNullOrEmpty(txtEmail.Text))
@@ -70,11 +79,12 @@ namespace Interfata_WindowsForms
 
         private void InapoiA_Click(object sender, EventArgs e)
         {
-            FormClienti form = new FormClienti();
+            Form1 form = new Form1();
             form.Show();
-            this.Close();
+            this.Hide();
         }
 
+        // Buton: Caută clienți în funcție de termenul introdus și actualizează tabelul
         private void btnCautareA_Click(object sender, EventArgs e)
         {
             string termenCautare = txtCautareA.Text.Trim().ToLower();
@@ -126,6 +136,7 @@ namespace Interfata_WindowsForms
             }
         }
 
+        // Încarcă toți clienții din fișier în tabelul DataGridView
         private void IncarcaClienti()
         {
             try

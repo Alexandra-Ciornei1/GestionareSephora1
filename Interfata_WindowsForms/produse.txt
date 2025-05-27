@@ -1,0 +1,6 @@
+Parfum Scandal,400,50,Parfumuri
+Parfum Scandal,300,30,Parfumuri
+Gel de curatare,100,50,Skincare
+Tus Nyx,100,20,Machiaj
+Crema,30,30,Machiaj
+Ruj,300,25,Machiaj

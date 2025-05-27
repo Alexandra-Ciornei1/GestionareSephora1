@@ -1,0 +1,4 @@
+1,Alexandra,al@gmail.com,
+2,Denisa,denisarobu@gmail.com,
+3,Strugariu Gabriel,strgab@yahoo.com,
+4,Hamzeu Diana,diana@email.com,Program de loialitate

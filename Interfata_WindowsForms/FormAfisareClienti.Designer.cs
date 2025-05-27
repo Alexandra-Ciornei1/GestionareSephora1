@@ -45,6 +45,8 @@
             this.lblNume = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblPreferinte = new System.Windows.Forms.Label();
+            this.BtnAdaugaClient = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClienti)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +58,7 @@
             this.Nume,
             this.Email,
             this.Preferinte});
-            this.dataGridViewClienti.Location = new System.Drawing.Point(83, 75);
+            this.dataGridViewClienti.Location = new System.Drawing.Point(83, 87);
             this.dataGridViewClienti.Name = "dataGridViewClienti";
             this.dataGridViewClienti.Size = new System.Drawing.Size(561, 205);
             this.dataGridViewClienti.TabIndex = 0;
@@ -84,7 +86,7 @@
             // InapoiA
             // 
             this.InapoiA.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InapoiA.Location = new System.Drawing.Point(644, 401);
+            this.InapoiA.Location = new System.Drawing.Point(638, 415);
             this.InapoiA.Name = "InapoiA";
             this.InapoiA.Size = new System.Drawing.Size(75, 23);
             this.InapoiA.TabIndex = 1;
@@ -95,7 +97,7 @@
             // btnCautareA
             // 
             this.btnCautareA.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCautareA.Location = new System.Drawing.Point(661, 30);
+            this.btnCautareA.Location = new System.Drawing.Point(657, 46);
             this.btnCautareA.Name = "btnCautareA";
             this.btnCautareA.Size = new System.Drawing.Size(75, 23);
             this.btnCautareA.TabIndex = 2;
@@ -106,7 +108,7 @@
             // txtCautareA
             // 
             this.txtCautareA.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCautareA.Location = new System.Drawing.Point(517, 32);
+            this.txtCautareA.Location = new System.Drawing.Point(517, 48);
             this.txtCautareA.Name = "txtCautareA";
             this.txtCautareA.Size = new System.Drawing.Size(100, 21);
             this.txtCautareA.TabIndex = 3;
@@ -114,13 +116,12 @@
             // BtnModifica
             // 
             this.BtnModifica.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnModifica.Location = new System.Drawing.Point(198, 401);
+            this.BtnModifica.Location = new System.Drawing.Point(198, 415);
             this.BtnModifica.Name = "BtnModifica";
             this.BtnModifica.Size = new System.Drawing.Size(75, 23);
             this.BtnModifica.TabIndex = 4;
             this.BtnModifica.Text = "Modifica";
             this.BtnModifica.UseVisualStyleBackColor = true;
-            this.BtnModifica.TextChanged += new System.EventHandler(this.BtnModifica_Click);
             // 
             // txtNume
             // 
@@ -153,38 +154,63 @@
             // lblId
             // 
             this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(71, 301);
+            this.lblId.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblId.Location = new System.Drawing.Point(62, 300);
             this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(16, 13);
+            this.lblId.Size = new System.Drawing.Size(17, 15);
             this.lblId.TabIndex = 9;
             this.lblId.Text = "Id";
             // 
             // lblNume
             // 
             this.lblNume.AutoSize = true;
-            this.lblNume.Location = new System.Drawing.Point(71, 327);
+            this.lblNume.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNume.Location = new System.Drawing.Point(62, 326);
             this.lblNume.Name = "lblNume";
-            this.lblNume.Size = new System.Drawing.Size(35, 13);
+            this.lblNume.Size = new System.Drawing.Size(39, 15);
             this.lblNume.TabIndex = 10;
             this.lblNume.Text = "Nume";
             // 
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(71, 353);
+            this.lblEmail.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.Location = new System.Drawing.Point(62, 352);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(32, 13);
+            this.lblEmail.Size = new System.Drawing.Size(37, 15);
             this.lblEmail.TabIndex = 11;
             this.lblEmail.Text = "Email";
             // 
             // lblPreferinte
             // 
             this.lblPreferinte.AutoSize = true;
-            this.lblPreferinte.Location = new System.Drawing.Point(70, 379);
+            this.lblPreferinte.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPreferinte.Location = new System.Drawing.Point(62, 378);
             this.lblPreferinte.Name = "lblPreferinte";
-            this.lblPreferinte.Size = new System.Drawing.Size(52, 13);
+            this.lblPreferinte.Size = new System.Drawing.Size(60, 15);
             this.lblPreferinte.TabIndex = 12;
             this.lblPreferinte.Text = "Preferinte";
+            // 
+            // BtnAdaugaClient
+            // 
+            this.BtnAdaugaClient.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAdaugaClient.Location = new System.Drawing.Point(371, 415);
+            this.BtnAdaugaClient.Name = "BtnAdaugaClient";
+            this.BtnAdaugaClient.Size = new System.Drawing.Size(113, 23);
+            this.BtnAdaugaClient.TabIndex = 13;
+            this.BtnAdaugaClient.Text = "Adauga Client";
+            this.BtnAdaugaClient.UseVisualStyleBackColor = true;
+            this.BtnAdaugaClient.Click += new System.EventHandler(this.BtnAdaugaClient_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Stencil", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(329, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(89, 25);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "CLIENTI";
             // 
             // FormAfisareClienti
             // 
@@ -192,6 +218,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(744, 450);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.BtnAdaugaClient);
             this.Controls.Add(this.lblPreferinte);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.lblNume);
@@ -233,5 +261,7 @@
         private System.Windows.Forms.Label lblNume;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label lblPreferinte;
+        private System.Windows.Forms.Button BtnAdaugaClient;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -37,6 +37,7 @@
             this.InapoiB = new System.Windows.Forms.Button();
             this.txtCautareB = new System.Windows.Forms.TextBox();
             this.BtnModifica = new System.Windows.Forms.Button();
+            this.AdaugareProdusBtn = new System.Windows.Forms.Button();
             this.lblNume = new System.Windows.Forms.Label();
             this.lblPret = new System.Windows.Forms.Label();
             this.lblCantitate = new System.Windows.Forms.Label();
@@ -45,6 +46,7 @@
             this.txtPret = new System.Windows.Forms.TextBox();
             this.txtCantitate = new System.Windows.Forms.TextBox();
             this.txtCategorie = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProduse)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +58,7 @@
             this.Pret,
             this.Cantitate,
             this.Categorie});
-            this.dataGridViewProduse.Location = new System.Drawing.Point(35, 92);
+            this.dataGridViewProduse.Location = new System.Drawing.Point(142, 99);
             this.dataGridViewProduse.Name = "dataGridViewProduse";
             this.dataGridViewProduse.Size = new System.Drawing.Size(483, 178);
             this.dataGridViewProduse.TabIndex = 0;
@@ -84,7 +86,7 @@
             // btnCautareA
             // 
             this.btnCautareA.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCautareA.Location = new System.Drawing.Point(573, 45);
+            this.btnCautareA.Location = new System.Drawing.Point(667, 53);
             this.btnCautareA.Name = "btnCautareA";
             this.btnCautareA.Size = new System.Drawing.Size(75, 23);
             this.btnCautareA.TabIndex = 1;
@@ -105,7 +107,7 @@
             // txtCautareB
             // 
             this.txtCautareB.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCautareB.Location = new System.Drawing.Point(442, 45);
+            this.txtCautareB.Location = new System.Drawing.Point(515, 55);
             this.txtCautareB.Name = "txtCautareB";
             this.txtCautareB.Size = new System.Drawing.Size(100, 21);
             this.txtCautareB.TabIndex = 3;
@@ -120,6 +122,16 @@
             this.BtnModifica.Text = "Modifica";
             this.BtnModifica.UseVisualStyleBackColor = true;
             this.BtnModifica.Click += new System.EventHandler(this.BtnModifica_Click);
+            // 
+            // AdaugareProdusBtn
+            // 
+            this.AdaugareProdusBtn.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AdaugareProdusBtn.Location = new System.Drawing.Point(442, 400);
+            this.AdaugareProdusBtn.Name = "AdaugareProdusBtn";
+            this.AdaugareProdusBtn.Size = new System.Drawing.Size(100, 23);
+            this.AdaugareProdusBtn.TabIndex = 13;
+            this.AdaugareProdusBtn.Text = "Adauga Produs";
+            this.AdaugareProdusBtn.UseVisualStyleBackColor = true;
             // 
             // lblNume
             // 
@@ -193,12 +205,23 @@
             this.txtCategorie.Size = new System.Drawing.Size(100, 21);
             this.txtCategorie.TabIndex = 12;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Stencil", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(351, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(105, 25);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "PRODUSE";
+            // 
             // FormAfisareProduse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtCategorie);
             this.Controls.Add(this.txtCantitate);
             this.Controls.Add(this.txtPret);
@@ -208,6 +231,7 @@
             this.Controls.Add(this.lblPret);
             this.Controls.Add(this.lblNume);
             this.Controls.Add(this.BtnModifica);
+            this.Controls.Add(this.AdaugareProdusBtn);
             this.Controls.Add(this.txtCautareB);
             this.Controls.Add(this.InapoiB);
             this.Controls.Add(this.btnCautareA);
@@ -232,6 +256,7 @@
         private System.Windows.Forms.Button InapoiB;
         private System.Windows.Forms.TextBox txtCautareB;
         private System.Windows.Forms.Button BtnModifica;
+        private System.Windows.Forms.Button AdaugareProdusBtn;
         private System.Windows.Forms.Label lblNume;
         private System.Windows.Forms.Label lblPret;
         private System.Windows.Forms.Label lblCantitate;
@@ -240,5 +265,6 @@
         private System.Windows.Forms.TextBox txtPret;
         private System.Windows.Forms.TextBox txtCantitate;
         private System.Windows.Forms.TextBox txtCategorie;
+        private System.Windows.Forms.Label label1;
     }
 }

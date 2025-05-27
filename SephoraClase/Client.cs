@@ -4,7 +4,7 @@ namespace SephoraClase
 {
     public class Client
     {
-        private const char SEPARATOR_PRINCIPAL_FISIER = ','; // Ajustăm separatorul la ',' conform fișierului
+        private const char SEPARATOR_PRINCIPAL_FISIER = ','; 
 
         private const int ID = 0;
         private const int NUME = 1;
@@ -15,7 +15,7 @@ namespace SephoraClase
         public int IDClient { get; set; }
         public string Nume { get; set; }
         public string Email { get; set; }
-        public string Preferinte { get; set; } // Adăugăm proprietatea Preferinte
+        public string Preferinte { get; set; } 
 
         // Constructor implicit
         public Client()

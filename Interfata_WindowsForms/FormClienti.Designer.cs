@@ -166,7 +166,8 @@
             // btnInapoi
             // 
             this.btnInapoi.BackColor = System.Drawing.Color.Thistle;
-            this.btnInapoi.Location = new System.Drawing.Point(614, 279);
+            this.btnInapoi.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInapoi.Location = new System.Drawing.Point(614, 273);
             this.btnInapoi.Name = "btnInapoi";
             this.btnInapoi.Size = new System.Drawing.Size(75, 23);
             this.btnInapoi.TabIndex = 10;
@@ -200,7 +201,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.chkLoyaltyProgram);
             this.Controls.Add(this.chkEmailNotifications);

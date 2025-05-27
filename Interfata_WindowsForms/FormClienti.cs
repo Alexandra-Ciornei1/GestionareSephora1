@@ -1,9 +1,7 @@
 ﻿using System;
-using System.IO;
 using System.Windows.Forms;
 using SephoraClase;
 using NivelStocareDate;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,76 +11,45 @@ namespace Interfata_WindowsForms
     {
         private AdministrareClient_FisierText adminClienti;
 
+        // Inițializează formularul pentru adăugarea unui client nou
         public FormClienti()
         {
             InitializeComponent();
             adminClienti = new AdministrareClient_FisierText("clienti.txt");
+            btnAdaugaClient.Click += btnAdaugaClient_Click;
+            btnInapoi.Click += btnInapoi_click;
         }
 
+        // Validează câmpurile de intrare și afișează erori dacă este cazul
         private bool ValidareInput()
         {
             bool valid = true;
             errorProvider1.Clear();
-
-            label4.Visible = false;
-            label5.Visible = false;
-            label6.Visible = false;
+            errorProvider2.Clear();
+            errorProvider3.Clear();
 
             if (string.IsNullOrWhiteSpace(txtId.Text))
             {
                 errorProvider1.SetError(txtId, "Id-ul este obligatoriu!");
-                label4.Text = "Prenumele este obligatoriu!";
-                label4.Visible = true;
                 valid = false;
             }
 
             if (string.IsNullOrWhiteSpace(txtNumeClient.Text))
             {
                 errorProvider2.SetError(txtNumeClient, "Numele este obligatoriu!");
-                label5.Text = "Numele este obligatoriu!";
-                label5.Visible = true;
                 valid = false;
             }
 
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
             {
                 errorProvider3.SetError(txtEmail, "Email este obligatoriu!");
-                label6.Text = "Email nu a fost adăugată!";
-                label6.Visible = true;
                 valid = false;
             }
 
             return valid;
         }
 
-        private bool ExistaClient(string id, string nume, string email)
-        {
-            try
-            {
-                if (!File.Exists("clienti.txt"))
-                    return false;
-
-                string[] linii = File.ReadAllLines("clienti.txt");
-                foreach (string linie in linii)
-                {
-                    string[] date = linie.Split(',');
-                    if (date.Length >= 3 &&
-                        date[0].Trim() == id &&
-                        date[1].Trim().Equals(nume, StringComparison.OrdinalIgnoreCase) &&
-                        date[2].Trim().Equals(email, StringComparison.OrdinalIgnoreCase))
-                    {
-                        return true;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Eroare la verificarea clientului: {ex.Message}", "Eroare",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return false;
-        }
-
+        // Buton: Adaugă un client nou în fișier și revine la formularul de afișare clienți
         private void btnAdaugaClient_Click(object sender, EventArgs e)
         {
             if (!ValidareInput())
@@ -102,19 +69,10 @@ namespace Interfata_WindowsForms
             if (chkLoyaltyProgram.Checked) preferinte.Add("Program de loialitate");
             string preferinteStr = preferinte.Any() ? string.Join(";", preferinte) : "";
 
-            if (ExistaClient(id.ToString(), nume, email))
-            {
-                MessageBox.Show("Există deja un client cu acest ID, nume și email!", "Atenție",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             try
             {
-                using (StreamWriter sw = File.AppendText("clienti.txt"))
-                {
-                    sw.WriteLine($"{id},{nume},{email},{preferinteStr}");
-                }
+                Client client = new Client(id, nume, email, preferinteStr);
+                adminClienti.AddClient(client);
 
                 MessageBox.Show("Client adăugat cu succes!", "Succes",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -125,7 +83,6 @@ namespace Interfata_WindowsForms
                 chkEmailNotifications.Checked = false;
                 chkLoyaltyProgram.Checked = false;
 
-                // Deschide FormAfisareClienti după adăugarea clientului
                 FormAfisareClienti form = new FormAfisareClienti();
                 form.Show();
                 this.Hide();
@@ -139,7 +96,7 @@ namespace Interfata_WindowsForms
 
         private void btnInapoi_click(object sender, EventArgs e)
         {
-            Form1 form = new Form1();
+            FormAfisareClienti form = new FormAfisareClienti();
             form.Show();
             this.Hide();
         }

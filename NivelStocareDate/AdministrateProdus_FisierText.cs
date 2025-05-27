@@ -9,6 +9,7 @@ namespace NivelStocareDate
         private const int NR_MAX_PRODUSE = 50;
         private string filePath;
 
+        // Inițializează clasa și creează sau deschide fișierul pentru produse
         public AdministrareProdus_FisierText(string filePath)
         {
             this.filePath = filePath;
@@ -16,6 +17,7 @@ namespace NivelStocareDate
             streamFisierText.Close();
         }
 
+        // Adaugă un produs nou în fișierul text
         public void AddProdus(Produs produs)
         {
             using (StreamWriter streamWriterFisierText = new StreamWriter(filePath, true))
@@ -24,6 +26,7 @@ namespace NivelStocareDate
             }
         }
 
+        // Citește toate produsele din fișier și le returnează ca un array
         public Produs[] GetProduse(out int nrProduse)
         {
             Produs[] produse = new Produs[NR_MAX_PRODUSE];
@@ -39,6 +42,7 @@ namespace NivelStocareDate
             return produse;
         }
 
+        // Returnează un produs specific din fișier pe baza indexului
         public Produs GetProdusAtIndex(int index)
         {
             string[] linii = File.ReadAllLines(filePath);
@@ -49,6 +53,7 @@ namespace NivelStocareDate
             throw new Exception("Index invalid pentru produs.");
         }
 
+        // Actualizează informațiile unui produs existent în fișier
         public bool UpdateProdus(int index, Produs produsActualizat)
         {
             try
